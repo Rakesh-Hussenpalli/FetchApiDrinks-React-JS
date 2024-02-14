@@ -1,36 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import './index.css'
-import DrinksData from '../DrinksData'
+import React, { useState, useEffect } from 'react';
+import './index.css';
+import DrinksData from '../DrinksData';
 
-const URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+const URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 const FetchDrinks = () => {
-    const [drinksData, setDrinksData] = useState([])
-    const [searchDrink, setSearchDrink] = useState("")
-    const [loading, setLoading] = useState(false)
-    const [isError, setIsError] = useState({ status: false, msg: "" })
+    const [drinksData, setDrinksData] = useState([]);
+    const [searchDrink, setSearchDrink] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [isError, setIsError] = useState({ status: false, msg: "" });
 
     const fetchDrinks = async (apiURL) => {
-        setLoading(true)
-        setIsError({ status: false, msg: "" })
+        setLoading(true);
+        setIsError({ status: false, msg: "" });
         try {
-            const response = await fetch(apiURL)
-            const { drinks } = await response.json()
-            setDrinksData(drinks)
-            setLoading(false)
-            setIsError({ status: false, msg: "" })
+            const response = await fetch(apiURL);
+            const { drinks } = await response.json();
+            setDrinksData(drinks);
+            setLoading(false);
+            setIsError({ status: false, msg: "" });
             if (!drinks) {
-                throw new Error("Data not found")
+                throw new Error("Data not found");
             }
         }
         catch (error) {
-            setLoading(false)
-            setIsError({ status: true, msg: error.message || "Something went wrong" })
+            setLoading(false);
+            setIsError({ status: true, msg: error.message || "Something went wrong" });
         }
     }
 
     useEffect(() => {
-        const searchURL = `${URL}${searchDrink}`
-        fetchDrinks(searchURL)
+        const searchURL = `${URL}${searchDrink}`;
+        fetchDrinks(searchURL);
     }, [searchDrink])
     return (
         <div className="bg-container">
@@ -63,4 +63,4 @@ const FetchDrinks = () => {
     )
 }
 
-export default FetchDrinks
+export default FetchDrinks;
