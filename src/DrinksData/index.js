@@ -1,7 +1,7 @@
-import './index.css'
+import './index.css';
 
 const DrinksData=({drinksData})=>{
-    const {strDrink,strDrinkThumb}=drinksData
+    const {strDrink,strDrinkThumb}=drinksData;
     return(
         <li className="drinks-list">
             <div>
@@ -12,4 +12,4 @@ const DrinksData=({drinksData})=>{
     )
 }
 
-export default DrinksData
+export default DrinksData;
